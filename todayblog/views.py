@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
+from .api import check_covid
 from .forms import PostForm, PostModelForm, CommentModelFrom
 from .models import Post ,Comment
 
@@ -117,4 +118,17 @@ def free_post_list(request):
 def free_post_detail(request,pk):
     post = get_object_or_404(Post,pk=pk)
     return render(request, 'todayblog/free_post_detail.html', {'post_key':post})
+
+# 코로나 페이지
+def covid_post_list(request):
+    date, data = check_covid()
+    return render(request, 'todayblog/covid_main.html',
+                  {'date': date, 'today_patient': data[0], 'average_patient': data[1],
+                   'today_die': data[2], 'average_die': data[3], 'accumulated_die': data[4],
+                   'accumulated_patient': data[5]})
+
+
+
+
+
 

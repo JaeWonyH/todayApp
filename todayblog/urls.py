@@ -20,5 +20,8 @@ urlpatterns = [
     path('comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
     # http://localhost:8000/todayblog/freepost/5/comment/3/approve
     path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
+    #http://localhost:8000/todayblog/covid_check
+    path('covid_check/',views.covid_post_list, name = 'covid_post_list' ),
+
 
 ]

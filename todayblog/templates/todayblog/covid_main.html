@@ -1,0 +1,71 @@
+{% extends 'todayblog/base.html' %}
+
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<h3 class="text-center mt-3">코로나 현황</h3>
+<h5 class="text-center mt-3"> {{date}} </h5>
+<div class="row mb-3 mt-3 text-center justify-content-center">
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">일일 확진환자</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{today_patient}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">일일 사망환자</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{today_die}}</h1>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3 mt-3 text-center"> 
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">누적 확진환자</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{accumulated_patient}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">누적 사망환자</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{accumulated_die}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">7일간 평균 확진자수</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{average_patient}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">7일간 평균 사망자수</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{average_die}}</h1>
+          </div>
+        </div>
+    </div>     
+</div>
+{% endblock %}
