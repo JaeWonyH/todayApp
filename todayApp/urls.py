@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')), #여기서 url path 안에 넣어주는건 관리자 계정에서 사이트 보기 했을 때의 url
+    path('todayblog/', include('todayblog.urls')), #여기서 url path 안에 넣어주는건 관리자 계정에서 사이트 보기 했을 때의 url
+    #login
+    path('accounts/login/', auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    #logout
+    path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

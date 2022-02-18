@@ -1,0 +1,22 @@
+{% extends 'todayblog/base.html' %}
+
+{% block content %}
+
+    <div class="checklist">
+        <h2>오늘의 checklist</h2>
+        <div class="covid_check">
+            <h4><a href="#">오늘의 코로나</a> </h4>
+        </div>
+        <div class="weather_check">
+            <h4><a href="#">오늘의 날씨</a> </h4>
+        </div>
+        <div class="news_check">
+            <h4><a href="#">오늘의 뉴스</a> </h4>
+        </div>
+    </div>
+
+    <div class="post">
+        <h4><a href="{% url 'free_post_list' %}">자유게시판</a></h4>
+    </div>
+
+{% endblock %}

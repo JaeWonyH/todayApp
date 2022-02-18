@@ -1,0 +1,55 @@
+{##자유게시판 페이지#}
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>오늘의 Check</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+<div class="page-header">
+    <h1><a href="{% url 'free_post_list' %}">자유게시판</a></h1>
+    <h5><a href="{% url 'post_list_home' %}">뒤로가기</a></h5>
+    {#로그인 되면#}
+    {% if user.is_authenticated %}
+        <a href="{% url 'free_post_new' %}" class="free_top_menu">
+            <span class="glyphicon glyphicon-plus"></span></a>
+        <p class="free_top_menu">Hello {{ user.username }}<small>
+            (<a href="{% url 'logout' %}?next={{ request.path }}">Log
+            out</a>)</small></p>
+    {% else %}
+        <a href="{% url 'login' %}" class = "free_top_menu">
+            <span class="glyphicon glyphicon-lock"></span></a>
+    {% endif %}
+</div>
+
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+
+            {% for post in post_list %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="{% url 'free_post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                    <p>{{ post.text| linebreaksbr }}</p>
+                    <p>Approved Comments:{{ post.approved_comments.count }}</p>
+                </div>
+            {% empty %}
+                <p>글이 없습니다.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
