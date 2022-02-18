@@ -22,7 +22,7 @@
             (<a href="{% url 'logout' %}?next={{ request.path }}">Log
             out</a>)</small></p>
     {% else %}
-        <a href="{% url 'login' %}" class = "free_top_menu">
+        <a href="{% url 'login' %}" class="free_top_menu">
             <span class="glyphicon glyphicon-lock"></span></a>
     {% endif %}
 </div>
@@ -43,6 +43,8 @@
             {% empty %}
                 <p>글이 없습니다.</p>
             {% endfor %}
+
+            {% include 'todayblog/pagination.html' with page=post_list %}
         </div>
     </div>
 </div>
