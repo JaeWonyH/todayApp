@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .api import check_covid , check_news
+from .api import check_covid , check_news, check_weather
 from .forms import PostForm, PostModelForm, CommentModelFrom
 from .models import Post ,Comment, news_info
 
@@ -127,6 +127,15 @@ def covid_post_list(request):
                    'today_die': data[2], 'average_die': data[3], 'accumulated_die': data[4],
                    'accumulated_patient': data[5]})
 
+#날씨 페이지
+def weather_post_list(request):
+    data = check_weather()
+    return render(request,'todayblog/weather_main.html',
+                  {'address':data[0],'temp':data[1], 'summary':data[2],
+                   'rain_rate':data[3],'moisture':data[4], 'wind':data[5],
+                   'dust':data[6], 'mini_dust':data[7], 'radio':data[8],
+                   'sun_type':data[9], 'sun_time':data[10]
+                  })
 #뉴스 페이지
 def news_post_list(request):
     datalist_p = check_news('정치')

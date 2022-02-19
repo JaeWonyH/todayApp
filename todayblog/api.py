@@ -4,6 +4,54 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+#오늘의 날씨 웹 스크래핑
+def check_weather():
+    data = []
+    url = 'https://search.naver.com/search.naver?query=날씨'
+    res = requests.get(url)
+    xml = res.text
+    soup = BeautifulSoup(xml, 'html.parser')
+
+    data1 = soup.find('div', {'class': '_tab_flicking'})
+    #현재 위치 정보
+    address = data1.find('h2', {'class':'title'}).text
+    data.append(address)
+    #현재 온도
+    data2 = data1.find('div',{'class':'temperature_text'})
+    temp = data2.find('strong').text
+    matched = re.search(r'([0-9]+)', temp)
+    #현재 온도에서 숫자만 뽑음
+    tmp = matched.group(1)
+    data.append(tmp)
+    #summary: 어제와의 기온 비교 및 기상 요약
+    data3 = data1.find('div',{'class':'temperature_info'})
+    summary = data3.find('p',{'class':'summary'}).text
+    data.append(summary)
+    #강수확률 , 습도 ,바람(서풍)
+    data4 = data1.find('dl',{'class':'summary_list'})
+    rain_rate = data4.find_all('dd',{'class':'desc'})[0].text
+    moisture = data4.find_all('dd',{'class':'desc'})[1].text
+    wind = data4.find_all('dd',{'class':'desc'})[2].text
+    data.append(rain_rate)
+    data.append(moisture)
+    data.append(wind)
+    #오늘의 미세먼지, 초미세먼지, 자외선,일출/일몰
+    data5 = data1.find('div',{'class':'report_card_wrap'})
+    dust = (data5.find_all('li',{'class':'item_today level1'})[0]).find('span').text
+    mini_dust = (data5.find_all('li',{'class':'item_today level1'})[1]).find('span').text
+    radio = (data5.find_all('li',{'class':'item_today level1'})[2]).find('span').text
+    sun_type = (data5.find('li',{'class':'item_today type_sun'})).find('strong').text
+    sun_time = (data5.find('li',{'class':'item_today type_sun'})).find('span').text
+    data.append(dust)
+    data.append(mini_dust)
+    data.append(radio)
+    data.append(sun_type)
+    data.append(sun_time)
+    # 현재 위치, 현재 온도, 어제와의 기온비교 및 기상요약, 강수확률, 습도, 바람, 미세먼지,초미세먼지, 자외선, 일출/일몰,시간
+    return data
+
+
+
 #종목별 뉴스 기사 웹 스크래핑
 def check_news(section):
     #제목 , url정보 닮을 datalist

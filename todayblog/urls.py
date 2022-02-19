@@ -24,6 +24,6 @@ urlpatterns = [
     path('covid_check/',views.covid_post_list, name = 'covid_post_list' ),
     # http://localhost:8000/todayblog/news_check
     path('news_check/', views.news_post_list, name='news_post_list'),
-
-
+    # http://localhost:8000/todayblog/weather_check
+    path('weather_check/', views.weather_post_list, name='weather_post_list'),
 ]

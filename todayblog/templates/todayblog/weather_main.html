@@ -1,0 +1,87 @@
+{% extends 'todayblog/base.html' %}
+
+{% block content %}
+<h3 class="text-center mt-3">{{ address }}</h3>
+<h5 class="text-center mt-3"> {{summary}} </h5>
+<div class="row mb-3 mt-3 text-center justify-content-center">
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">온도</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{temp}}℃ </h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">강수확률</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{rain_rate}}</h1>
+          </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">습도</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{moisture}}</h1>
+          </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">바람(서풍)</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{wind}}</h1>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3 mt-3 text-center">
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">미세먼지</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{dust}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">초미세먼지</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{mini_dust}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">자외선수치</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{radio}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 fw-normal">{{ sun_type }}</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{sun_time}}</h1>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
