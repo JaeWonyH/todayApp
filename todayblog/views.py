@@ -3,9 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .api import check_covid
+from .api import check_covid , check_news
 from .forms import PostForm, PostModelForm, CommentModelFrom
-from .models import Post ,Comment
+from .models import Post ,Comment, news_info
 
 
 #댓글 승인
@@ -126,6 +126,36 @@ def covid_post_list(request):
                   {'date': date, 'today_patient': data[0], 'average_patient': data[1],
                    'today_die': data[2], 'average_die': data[3], 'accumulated_die': data[4],
                    'accumulated_patient': data[5]})
+
+#뉴스 페이지
+def news_post_list(request):
+    datalist_p = check_news('정치')
+    datalist_e = check_news('경제')
+    datalist_s = check_news('사회')
+    datalist_c = check_news('생활/문화')
+    datalist_IT = check_news('IT/과학')
+    datalist_w = check_news('세계')
+
+    return render(request, 'todayblog/news_main.html',
+                  {'politic_1_title':datalist_p[0], 'politic_1_url':datalist_p[1],
+                   'politic_2_title':datalist_p[2], 'politic_2_url':datalist_p[3],
+                   'politic_3_title':datalist_p[4], 'politic_3_url':datalist_p[5],
+                   'economic_1_title': datalist_e[0], 'economic_1_url': datalist_e[1],
+                   'economic_2_title': datalist_e[2], 'economic_2_url': datalist_e[3],
+                   'economic_3_title': datalist_e[4], 'economic_3_url': datalist_e[5],
+                   'society_1_title': datalist_s[0], 'society_1_url': datalist_s[1],
+                   'society_2_title': datalist_s[2], 'society_2_url': datalist_s[3],
+                   'society_3_title': datalist_s[4], 'society_3_url': datalist_s[5],
+                   'culture_1_title': datalist_c[0], 'culture_1_url': datalist_c[1],
+                   'culture_2_title': datalist_c[2], 'culture_2_url': datalist_c[3],
+                   'culture_3_title': datalist_c[4], 'culture_3_url': datalist_c[5],
+                   'IT_1_title': datalist_IT[0], 'IT_1_url': datalist_IT[1],
+                   'IT_2_title': datalist_IT[2], 'IT_2_url': datalist_IT[3],
+                   'IT_3_title': datalist_IT[4], 'IT_3_url': datalist_IT[5],
+                   'world_1_title': datalist_w[0], 'world_1_url': datalist_w[1],
+                   'world_2_title': datalist_w[2], 'world_2_url': datalist_w[3],
+                   'world_3_title': datalist_w[4], 'world_3_url': datalist_w[5],
+                   })
 
 
 

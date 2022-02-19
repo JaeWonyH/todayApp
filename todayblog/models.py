@@ -54,3 +54,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text + '(' + str(self.id) + ')'
+
+class news_info(models.Model):
+
+    title = models.TextField()
+    url = models.TextField()

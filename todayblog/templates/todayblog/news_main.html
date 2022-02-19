@@ -1,0 +1,69 @@
+{% extends 'todayblog/base.html' %}
+
+{% block content %}
+
+    <div class="checklist">
+        <h2>오늘의 뉴스</h2>
+        <h3>3가지씩만 알고가요</h3>
+        <div class="political">
+            <h3>정치</h3>
+            <p>
+                <a href="{{ politic_1_url }}">{{ politic_1_title }}</a><hr>
+                <a href="{{ politic_2_url }}">{{ politic_2_title }}</a><hr>
+                <a href="{{ politic_3_url }}">{{ politic_3_title }}</a><hr>
+            </p>
+        </div>
+
+        <div class="ecomonic">
+            <h3>경제</h3>
+            <p>
+                <p>
+                <a href="{{ economic_1_url }}">{{ economic_1_title }}</a><hr>
+                <a href="{{ economic_2_url }}">{{ economic_2_title }}</a><hr>
+                <a href="{{ economic_3_url }}">{{ economic_3_title }}</a><hr>
+                </p>
+            </p>
+        </div>
+        <div class="society">
+            <h3>사회</h3>
+            <p>
+                <p>
+                <a href="{{ society_1_url }}">{{ society_1_title }}</a><hr>
+                <a href="{{ society_2_url }}">{{ society_2_title }}</a><hr>
+                <a href="{{ society_3_url }}">{{ society_3_title }}</a><hr>
+                </p>
+            </p>
+        </div>
+        <div class="culture">
+            <h3>생활/문화</h3>
+            <p>
+                <p>
+                <a href="{{ culture_1_url }}">{{ culture_1_title }}</a><hr>
+                <a href="{{ culture_2_url }}">{{ culture_2_title }}</a><hr>
+                <a href="{{ culture_3_url }}">{{ culture_3_title }}</a><hr>
+                </p>
+            </p>
+        </div>
+        <div class="IT">
+            <h3>IT/과학</h3>
+            <p>
+                <p>
+                <a href="{{ IT_1_url }}">{{ IT_1_title }}</a><hr>
+                <a href="{{ IT_2_url }}">{{ IT_2_title }}</a><hr>
+                <a href="{{ IT_3_url }}">{{ IT_3_title }}</a><hr>
+                </p>
+            </p>
+        </div>
+        <div class="world">
+            <h3>세계</h3>
+            <p>
+                <p>
+                <a href="{{ world_1_url }}">{{ world_1_title }}</a><hr>
+                <a href="{{ world_2_url }}">{{ world_2_title }}</a><hr>
+                <a href="{{ world_3_url }}">{{ world_3_title }}</a><hr>
+                </p>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

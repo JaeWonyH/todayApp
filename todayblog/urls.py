@@ -22,6 +22,8 @@ urlpatterns = [
     path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
     #http://localhost:8000/todayblog/covid_check
     path('covid_check/',views.covid_post_list, name = 'covid_post_list' ),
+    # http://localhost:8000/todayblog/news_check
+    path('news_check/', views.news_post_list, name='news_post_list'),
 
 
 ]
