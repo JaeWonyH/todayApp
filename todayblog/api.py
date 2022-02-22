@@ -37,14 +37,14 @@ def check_weather():
     data.append(wind)
     #오늘의 미세먼지, 초미세먼지, 자외선,일출/일몰
     data5 = data1.find('div',{'class':'report_card_wrap'})
-    dust = (data5.find('li',{'class':'item_today level2'})).find('span').text
-    mini_dust = (data5.find_all('li',{'class':'item_today level1'})[0]).find('span').text
-    radio = (data5.find_all('li',{'class':'item_today level1'})[1]).find('span').text
+    # dust = (data5.find('li',{'class':'item_today level2'})).find('span').text
+    # mini_dust = (data5.find_all('li',{'class':'item_today level1'})[0]).find('span').text
+    # radio = (data5.find_all('li',{'class':'item_today level1'})[1]).find('span').text
     sun_type = (data5.find('li',{'class':'item_today type_sun'})).find('strong').text
     sun_time = (data5.find('li',{'class':'item_today type_sun'})).find('span').text
-    data.append(dust)
-    data.append(mini_dust)
-    data.append(radio)
+    # data.append(dust)
+    # data.append(mini_dust)
+    # data.append(radio)
     data.append(sun_type)
     data.append(sun_time)
     # 현재 위치, 현재 온도, 어제와의 기온비교 및 기상요약, 강수확률, 습도, 바람, 미세먼지,초미세먼지, 자외선, 일출/일몰,시간

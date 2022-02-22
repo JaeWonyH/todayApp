@@ -133,8 +133,7 @@ def weather_post_list(request):
     return render(request,'todayblog/weather_main.html',
                   {'address':data[0],'temp':data[1], 'summary':data[2],
                    'rain_rate':data[3],'moisture':data[4], 'wind':data[5],
-                   'dust':data[6], 'mini_dust':data[7], 'radio':data[8],
-                   'sun_type':data[9], 'sun_time':data[10]
+                   'sun_type':data[6], 'sun_time':data[7]
                   })
 #뉴스 페이지
 def news_post_list(request):
